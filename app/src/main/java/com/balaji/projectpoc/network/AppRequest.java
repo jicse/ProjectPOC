@@ -11,9 +11,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by balaji on 2/2/18.
+ * This class provides the methods to fetch data from API.
  */
-
 public class AppRequest {
 
     private Context mContext;

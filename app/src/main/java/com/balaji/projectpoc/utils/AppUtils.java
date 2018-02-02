@@ -12,23 +12,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * Utility methods for application.
+ */
 public class AppUtils {
 
     /**
      * Method to remove the empty data of country.
      *
      * @param data Country object from api.
-     * @return Country oject after empty filter.
+     * @return Country object after empty filter.
      */
     public static Country removeEmptyData(Country data) {
 
         List<Row> oldRows = data.getRows();
         List<Row> newRows = new ArrayList<>();
 
-        Iterator<Row> iterator = oldRows.iterator();
-
-        while (iterator.hasNext()) {
-            Row row = iterator.next();
+        for (Row row : oldRows) {
             if (!TextUtils.isEmpty(row.getTitle()) ||
                     !TextUtils.isEmpty(row.getTitle()) ||
                     !TextUtils.isEmpty(row.getTitle())) {
@@ -49,7 +49,10 @@ public class AppUtils {
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        NetworkInfo activeNetworkInfo = null;
+        if (connectivityManager != null) {
+            activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        }
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 

@@ -4,9 +4,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by balaji on 31/1/18.
+ * This class provides the singleton retrofit object for network calls.
  */
-
 public class ApiClient {
 
     public static final String BASE_URL = " https://dl.dropboxusercontent.com/";

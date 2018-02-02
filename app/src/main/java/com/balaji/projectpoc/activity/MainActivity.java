@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Override
     public void onSuccess(Response<Country> response) {
         swipeRefresh.setRefreshing(false);
-        getSupportActionBar().setTitle(response.body().getTitle());
+        setTitle(response.body().getTitle());
         CountryAdapter adapter = new CountryAdapter(getApplicationContext(), AppUtils.removeEmptyData(response.body()), new CountryAdapter.OnItemClickListener() {
             @Override
             public void onClick(Row row) {
@@ -60,6 +60,17 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Override
     public void onRefresh() {
         appRequest.fetchDataForCountry();
+    }
+
+    /**
+     * Method to set title for the action bar.
+     *
+     * @param title
+     */
+    public void setTitle(String title) {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
+        }
     }
 
 }
